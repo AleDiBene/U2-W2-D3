@@ -1,7 +1,142 @@
-@import "partials/reset";
-@import "partials/colors";
-@import "partials/fonts";
-@import "partials/spacings";
-@import "partials/buttons";
-@import "partials/mixins";
-@import "partials/animations";
+// assets/scss/style.scss
+@use "partials/colors" as *;  // Importa i colori (definiti nel file _colors.scss)
+@use "partials/buttons" as *; // Importa i mixin dei bottoni
+@use "partials/reset";
+@use "partials/fonts";
+@use "partials/spacings";
+
+
+
+// Hero Section
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: url('path_to_your_image.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+  padding: 20px;
+
+  .content {
+    max-width: 800px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .headline {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .btn {
+      @include button-style($color: $primary-color); // Usa il mixin button-style da "partials/buttons"
+      padding: 15px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// Griglia di 4 elementi
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background-color: #fff;
+  padding: 40px 20px;
+  animation: fadeInUp 1s ease-out;
+
+  .grid-item {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+  }
+}
+
+// Navbar
+.navbar {
+  width: 100%;
+  background-color: #333;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    .logo {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+
+      li {
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 1rem;
+          transition: color 0.3s;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animazioni
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

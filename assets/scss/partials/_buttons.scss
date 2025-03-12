@@ -1,7 +1,21 @@
-@import "mixins";
+// assets/scss/partials/_buttons.scss
 
-@each $name, $color in $button-colors {
-  .btn-#{$name} {
-    @include button-style($color);
+@use "partials/colors" as c;  // Importa _colors.scss con l'alias 'c'
+
+@mixin button-style($color) {
+  background-color: $color;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($color, 10%);
   }
+}
+
+.btn {
+  @include button-style(c.$primary-color);  // Usa l'alias 'c' per accedere alla variabile
 }
