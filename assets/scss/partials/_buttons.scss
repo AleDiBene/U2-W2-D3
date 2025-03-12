@@ -1,0 +1,7 @@
+@import "mixins";
+
+@each $name, $color in $button-colors {
+  .btn-#{$name} {
+    @include button-style($color);
+  }
+}

@@ -1,0 +1,21 @@
+$font-primary: 'Arial', sans-serif;
+$font-secondary: 'Georgia', serif;
+
+$font-sizes: (
+  sm: 12px,
+  normal: 16px,
+  md: 20px,
+  lg: 24px,
+  xl: 32px,
+  xxl: 40px
+);
+
+@mixin title-big {
+  font-size: map-get($font-sizes, xxl);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: $font-primary;
+}
